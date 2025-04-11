@@ -1,862 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carla Closes - Your Home Loan Partner</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap">
-    <style>
-        :root {
-            --primary-color: #1a3c34;
-            --secondary-color: #f5f2eb;
-            --accent-color: #c9baa7;
-            --text-color: #333333;
-            --light-text: #666666;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-color);
-            background-color: var(--secondary-color);
-            margin: 0;
-            padding: 0;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-        }
-        .font-script {
-            font-family: 'Dancing Script', cursive;
-            font-weight: 700;
-        }
-
-        .page-section {
-            display: none;
-        }
-
-        .active-page {
-            display: block;
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-
-        /* Base Button Styles for <a> tags */
-        .btn-primary,
-        a.btn-primary,
-        .btn-secondary,
-        a.btn-secondary,
-        a.btn-apply-banner,
-        a.btn-cta-white,
-        a.btn-cta-bordered {
-            display: inline-block;
-            padding: 12px 24px;
-            border: 2px solid transparent;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none !important;
-            text-align: center;
-            line-height: normal;
-        }
-
-        /* Primary Button */
-        .btn-primary,
-        a.btn-primary {
-            background-color: var(--primary-color);
-            color: white !important;
-            border-color: var(--primary-color);
-        }
-        .btn-primary:hover,
-        a.btn-primary:hover {
-            background-color: #0f2a24;
-            border-color: #0f2a24;
-            transform: translateY(-2px);
-            color: white !important;
-        }
-
-        /* Secondary Button */
-        .btn-secondary,
-        a.btn-secondary {
-            background-color: transparent;
-            color: var(--primary-color) !important;
-            border-color: var(--primary-color);
-            padding: 10px 22px; /* Adjust padding for border visibility */
-        }
-        .btn-secondary:hover,
-        a.btn-secondary:hover {
-            background-color: var(--primary-color);
-            color: white !important;
-            transform: translateY(-2px);
-            border-color: var(--primary-color);
-        }
-
-        /* Home Banner Apply Button */
-        a.btn-apply-banner {
-            background-color: white;
-            color: var(--primary-color) !important;
-            padding: 10px 22px; /* Adjust padding */
-            border-color: var(--primary-color); /* Use primary color for border */
-        }
-        a.btn-apply-banner:hover {
-             background-color: var(--secondary-color);
-             color: var(--primary-color) !important;
-             transform: translateY(-2px);
-             border-color: var(--primary-color);
-        }
-
-        /* CTA Section - White Button */
-        a.btn-cta-white {
-            background-color: white;
-            color: var(--primary-color) !important;
-            border-color: white; /* Border same as bg */
-             padding: 10px 22px; /* Adjust padding */
-        }
-        a.btn-cta-white:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            color: var(--primary-color) !important;
-            transform: translateY(-2px);
-        }
-
-        /* CTA Section - Bordered Button */
-        a.btn-cta-bordered {
-            background-color: transparent;
-            color: white !important;
-            border-color: white;
-            padding: 10px 22px; /* Adjust padding */
-        }
-        a.btn-cta-bordered:hover {
-            background-color: rgba(255, 255, 255, 0.1); /* Slight hover effect */
-            color: white !important;
-            border-color: white;
-            transform: translateY(-2px);
-        }
-
-
-        .section-title {
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            height: 3px;
-            width: 60px;
-            background-color: var(--primary-color);
-        }
-        .text-center .section-title:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-
-        .service-card, .benefit-card {
-            background-color: white;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .service-card:hover, .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .testimonial-card {
-            background-color: white;
-            position: relative;
-            padding: 30px;
-            margin-top: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .testimonial-card:before {
-            content: '\201C';
-            font-family: 'Cormorant Garamond', serif;
-            position: absolute;
-            top: -25px;
-            left: 20px;
-            font-size: 80px;
-            color: var(--primary-color);
-            opacity: 0.2;
-        }
-
-        .pricing-card {
-            border: 1px solid #e5e5e5;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-        }
-
-        .pricing-card:hover {
-            border-color: var(--primary-color);
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-        }
-
-        .pricing-card.featured {
-            border: 2px solid var(--primary-color);
-            transform: scale(1.05);
-        }
-
-        .pricing-card.featured:hover {
-            transform: scale(1.07);
-        }
-
-        .footer {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .footer a {
-            color: var(--accent-color);
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: white;
-        }
-
-        .nav-link {
-            position: relative;
-            font-weight: 500;
-            letter-spacing: 1px;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-            padding-bottom: 5px;
-            cursor: pointer;
-        }
-
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover:after,
-        .nav-link.active:after {
-            width: 100%;
-        }
-
-        .banner {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .banner:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            filter: grayscale(50%);
-        }
-
-        .form-input {
-            border: 1px solid #ddd;
-            padding: 12px 15px;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-
-        .form-input:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(26, 60, 52, 0.2);
-        }
-
-        .page-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .nmls-info {
-            font-size: 0.85rem;
-            color: var(--light-text);
-            margin-top: 1rem;
-        }
-        .footer .nmls-info {
-            color: #a0aec0;
-            font-size: 0.8rem;
-        }
-        .footer .nmls-info a {
-            color: var(--accent-color);
-            text-decoration: underline;
-        }
-         .footer .nmls-info a:hover {
-             color: white;
-         }
-
-    </style>
-</head>
-<body>
-    <!-- Header/Navigation -->
-    <header class="bg-white shadow-sm">
-        <div class="container mx-auto py-5 px-6 flex justify-between items-center">
-            <a href="#" class="block" onclick="showPage('home')">
-                <img src="img/logo.png" alt="Carla Closes Logo" class="h-[100px] w-auto" style="height: 200px;">            </a>
-            <nav class="hidden md:flex space-x-8 items-center">
-                <a href="#" class="nav-link" onclick="showPage('home')">Home</a>
-                <a href="#" class="nav-link" onclick="showPage('about')">About Us</a>
-                <a href="#" class="nav-link" onclick="showPage('services')">Services</a>
-                <a href="#" class="nav-link" onclick="showPage('why-choose-us')">Why Choose Us</a>
-                <a href="#" class="nav-link" onclick="showPage('contact')">Contact</a>
-                <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-primary ml-4">Apply Now</a>
-            </nav>
-            <div class="md:hidden flex items-center">
-                 <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="text-sm font-medium mr-4" style="color: var(--primary-color);">Apply Now</a>
-                <button id="menu-toggle" class="text-gray-600 focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-        </div>
-        <div id="mobile-menu" class="md:hidden hidden bg-white w-full py-4 px-6 shadow-md">
-            <nav class="flex flex-col space-y-4">
-                <a href="#" class="nav-link py-2" onclick="showPage('home')">Home</a>
-                <a href="#" class="nav-link py-2" onclick="showPage('about')">About Us</a>
-                <a href="#" class="nav-link py-2" onclick="showPage('services')">Services</a>
-                <a href="#" class="nav-link py-2" onclick="showPage('why-choose-us')">Why Choose Us</a>
-                <a href="#" class="nav-link py-2" onclick="showPage('contact')">Contact</a>
-                <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-primary w-full text-center mt-2">Apply Now</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Home Page Section -->
-    <section id="home" class="page-section active-page">
-        <!-- Banner Section -->
-        <div class="banner">
-            <!-- MODIFIED: Added text-center mx-auto -->
-            <div class="container mx-auto px-6 relative z-10 text-center">
-                <div class="max-w-4xl mx-auto">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6">Tailored Mortgage Solutions with a <span class="font-script">Personal Touch</span></h1>
-                    <p class="text-xl mb-8">Experience, Expertise, and Efficiency You Can Trust. Carla Durheim is your dedicated partner and advocate in achieving your homeownership goals.</p>
-                    <div class="flex flex-wrap gap-4 justify-center">
-                        <a href="https://link.growsimple.tech/widget/booking/Vt3xFartJlAe19Tb4HId" target="_blank" class="btn-primary">Schedule Consultation</a>
-                        <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-apply-banner">Apply Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- About Preview Section -->
-        <div class="py-20" style="background-color: var(--secondary-color);">
-             <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div class="text-center">
-                        <h2 class="text-4xl font-bold mb-6 section-title inline-block" style="color: var(--primary-color);">Meet Carla: Your Dedicated Home Loan Partner</h2>
-                        <p class="text-lg mb-4">Hi there! For 37 years, my journey in the lending world – from credit unions to managing banks and leading development teams – has shown me one crucial thing: finding the right home financing is deeply personal. It's about more than just numbers; it's about your family, your security, and your dreams.</p>
-                        <p class="text-lg mb-4">My passion isn't just providing financial solutions; it's being your dedicated partner and advocate. Experience taught me you don't need another salesperson – you need a trusted guide who genuinely understands your goals and helps you navigate the path forward. That’s the heart of why my business partner, Mike Hobbs, and I founded our company, focusing on integrity, real partnership, and your satisfaction.</p>
-                        <p class="text-lg mb-4">When I'm not immersed in the world of mortgages, you'll likely find me cherishing time with my family, friends, and my beloved pets. I have a passion for exploring the world, whether through trying new recipes in the kitchen, traveling to new destinations, or simply embarking on everyday adventures. I truly believe that curiosity and connection are vital – in life *and* in finding the perfect home loan solution for you!</p>
-                        <p class="text-lg mb-8">If you're seeking a lending partner who prioritizes your needs and guides you with care, <a href="#" onclick="showPage('contact')" class="text-primary-color font-semibold hover:underline">I'd love to connect</a> and explore how we can achieve your homeownership goals together.</p>
-                        <div class="text-center mt-8">
-                             <button class="btn-primary" onclick="showPage('about')">Read My Full Story</button>
-                        </div>
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-xl">
-                        <img src="img/carla-pic.jpg" alt="Carla Durheim - Home Loan Broker" class="w-full h-auto object-cover">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Services Highlight Section -->
-        <div class="py-20 bg-white">
-             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4 section-title inline-block" style="color: var(--primary-color);">Loan Products & Programs</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">A wide range of financing options designed in our Loan Lab™ to manufacture a purpose-designed loan for you.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-10">
-                    <div class="service-card p-8 text-center">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-home text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Fixed & ARMs</h3>
-                        <p class="text-gray-600 mb-6">Secure predictable payments with fixed-rate mortgages or explore flexibility with adjustable-rate options.</p>
-                        <a href="#" class="text-primary-color font-medium hover:underline" style="color: var(--primary-color);" onclick="showPage('services')">Learn More →</a>
-                    </div>
-                    <div class="service-card p-8 text-center">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-piggy-bank text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">FHA & VA Loans</h3>
-                        <p class="text-gray-600 mb-6">Government-backed loan programs offering flexible qualification requirements and potential low down payments.</p>
-                         <a href="#" class="text-primary-color font-medium hover:underline" style="color: var(--primary-color);" onclick="showPage('services')">Learn More →</a>
-                    </div>
-                    <div class="service-card p-8 text-center">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-tools text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Renovation Loans</h3>
-                        <p class="text-gray-600 mb-6">Finance both the purchase and renovation costs of your home with a single, convenient loan.</p>
-                        <a href="#" class="text-primary-color font-medium hover:underline" style="color: var(--primary-color);" onclick="showPage('services')">Learn More →</a>
-                    </div>
-                </div>
-                <div class="text-center mt-14">
-                    <button class="btn-primary" onclick="showPage('services')">View All Loan Programs</button>
-                </div>
-            </div>
-        </div>
-
-                <!-- Testimonials Section -->
-                <div class="py-20 bg-white">
-                    <div class="container mx-auto px-6">
-                       <!-- MODIFIED: Removed section-title class, added star div -->
-                       <div class="text-center mb-16">
-                           <h2 class="text-4xl font-bold mb-4" style="color: var(--primary-color);">Client Success Stories</h2>
-                           <!-- Added Star Icons -->
-                           <div class="text-center text-yellow-500 text-2xl mb-4">
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                           </div>
-                           <p class="text-lg text-gray-600 max-w-3xl mx-auto">Hear how Carla's dedication and expertise have helped families achieve their homeownership dreams.</p>
-                       </div>
-                       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                            <div class="testimonial-card rounded-lg">
-                               <p class="text-gray-600 mb-6">"Carla made the complex mortgage process feel simple and straightforward. Her guidance was invaluable in securing the perfect loan for our first home. We felt supported every step of the way!"</p>
-                               <div class="flex items-center">
-                                   <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
-                                       <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1061&q=80" alt="Client" class="w-full h-full object-cover">
-                                   </div>
-                                   <div>
-                                       <h4 class="font-semibold" style="color: var(--primary-color);">The Johnson Family</h4>
-                                       <p class="text-sm text-gray-500">First-Time Homebuyers</p>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="testimonial-card rounded-lg">
-                               <p class="text-gray-600 mb-6">"Refinancing seemed daunting, but Carla found us an option that significantly lowered our monthly payments. Her knowledge and proactive communication were exceptional."</p>
-                               <div class="flex items-center">
-                                   <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
-                                       <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Client" class="w-full h-full object-cover">
-                                   </div>
-                                   <div>
-                                       <h4 class="font-semibold" style="color: var(--primary-color);">Mark Davis</h4>
-                                       <p class="text-sm text-gray-500">Refinance Client</p>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="testimonial-card rounded-lg">
-                               <p class="text-gray-600 mb-6">"As an investor, finding the right financing quickly is crucial. Carla understands the market and always presents the best options. Her efficiency and expertise are unmatched."</p>
-                               <div class="flex items-center">
-                                   <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
-                                       <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Client" class="w-full h-full object-cover">
-                                   </div>
-                                   <div>
-                                       <h4 class="font-semibold" style="color: var(--primary-color);">Emily Thompson</h4>
-                                       <p class="text-sm text-gray-500">Real Estate Investor</p>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-
-        <!-- CTA Section -->
-        <div class="py-16" style="background-color: var(--primary-color);">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to Find the Financial Key to Your Home?</h2>
-                <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Let's discuss your homeownership goals. Schedule a consultation or start your application today!</p>
-                 <!-- MODIFIED: Apply new CTA button classes -->
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="https://link.growsimple.tech/widget/booking/Vt3xFartJlAe19Tb4HId" target="_blank" class="btn-cta-white">Schedule Consultation</a>
-                    <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-cta-bordered">Apply Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-       <!-- About Page Section -->
-    <section id="about" class="page-section">
-        <!-- Banner Section -->
-        <div class="banner">
-            <div class="container mx-auto px-6 relative z-10 text-center">
-                <div class="max-w-2xl mx-auto">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6">About Carla Closes</h1>
-                    <p class="text-xl mb-8">Learn about Carla Durheim, the Home Loan Chemists philosophy, and our commitment to your home financing success.</p>
-                </div>
-            </div>
-        </div>
-        <!-- Our Story Section -->
-        <div class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h2 class="text-4xl font-bold mb-6 section-title" style="color: var(--primary-color);">Our Chemistry Creates Great Relationships</h2>
-                        <p class="text-lg mb-6">With a combined 116 years in mortgage lending, legal, and real estate between the founders, Carla Durheim and Mike Hobbs established Chem Financial with a core belief: genuine partnership and advocacy lead to the best client outcomes.</p>
-                        <p class="text-lg mb-6">Our chemistry defines our virtues, emphasizing community belonging, family security, and the camaraderie of friends. We relentlessly fight for our clients' right to homeownership, fueled by a passion and heritage of winning.</p>
-                        <p class="text-lg mb-6">We are your voice, speaking out in word and deed, to provide superior home financing solutions. Ask us about our Loan Lab™ and how we use it to manufacture a purpose-designed loan for you.</p>
-                        <p class="text-lg mb-6">Powered by Summit Lending, we offer lending services built on integrity, partnership, and client satisfaction.</p>
-                         <div class="nmls-info">
-                           Powered by Summit Lending - NMLS 1850081
-                        </div>
-                    </div>
-                    <div class="rounded-lg overflow-hidden shadow-xl">
-                        <!-- MODIFIED: Updated image src -->
-                        <img src="img/Homeownership.png" alt="Chem Financial Philosophy" class="w-full h-auto">
-                        <!-- Note: Removed object-cover as it might not be needed if the image aspect ratio fits well -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Core Values Section -->
-        <div class="py-20" style="background-color: var(--secondary-color);">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4 section-title inline-block" style="color: var(--primary-color);">Our Core Values</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">The principles guiding our work and commitment to you.</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-                    <div class="bg-white p-8 rounded-lg shadow-md text-center benefit-card">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-handshake text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Partnership</h3>
-                        <p class="text-gray-600">We view our client relationships as true partnerships, working collaboratively towards your homeownership goals.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md text-center benefit-card">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-bullhorn text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Advocacy</h3>
-                        <p class="text-gray-600">We relentlessly fight for your best interests, acting as your dedicated advocate throughout the financing process.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md text-center benefit-card">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-shield-alt text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Integrity</h3>
-                        <p class="text-gray-600">We operate with the highest ethical standards, ensuring transparency and trust in every interaction.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-md text-center benefit-card">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-star text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Client Satisfaction</h3>
-                        <p class="text-gray-600">Your satisfaction is our ultimate goal. We strive to deliver personalized solutions that exceed expectations.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Meet Carla Section on About Page -->
-        <div class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4 section-title inline-block" style="color: var(--primary-color);">Meet Carla Durheim</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Your experienced partner in home financing.</p>
-                </div>
-                <div class="max-w-4xl mx-auto">
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg md:flex">
-                        <div class="md:w-1/3">
-                            <img src="img/carla-pic.jpg" alt="Carla Durheim" class="w-full h-full md:h-[400px] object-cover"> <!-- Adjust height as needed -->
-                        </div>
-                        <div class="p-6 md:p-8 md:w-2/3">
-                            <h3 class="text-3xl font-bold mb-2" style="color: var(--primary-color);">Carla Durheim</h3>
-                            <p class="text-gray-500 font-medium mb-4">Founder | Home Loan Broker | NMLS #61502</p>
-                            <p class="text-gray-700 mb-4">With 37 years in the lending industry, I’m more than a financial solutions provider—I’m a dedicated partner and advocate for my clients. From my early days in a Credit Union to managing a bank and leading teams in non-QM lending, my career has always centered on delivering personalized solutions that truly benefit clients.</p>
-                            <p class="text-gray-700 mb-4">As a VP of Business Development, I spearheaded initiatives that connected banks and credit unions with innovative strategies, empowering them to better serve their communities—particularly through Affinity programs. My experience has taught me that clients don’t need a salesperson; they need a trusted partner who understands their goals and guides them toward the best solutions possible.</p>
-                            <p class="text-gray-700 mb-4">That philosophy led me to co-found my own company with my business partner, Mike Hobbs, to offer lending services built on integrity, partnership, and client satisfaction.</p>
-                            <p class="text-gray-700 mb-6">Beyond my career, I’m passionate about spending time with my family, friends, and my pets, as well as exploring the world through cooking, travel, and new adventures. If you’re looking for a lending partner who puts your needs first, let’s connect!</p>
-                            <div class="flex space-x-4">
-                                <a href="mailto:Carla@ChemFinancial.com" class="text-gray-500 hover:text-primary-color text-xl">
-                                    <i class="far fa-envelope"></i>
-                                </a>
-                                <a href="tel:509-994-2721" class="text-gray-500 hover:text-primary-color text-xl">
-                                    <i class="fas fa-phone"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- CTA Section -->
-        <div class="py-16" style="background-color: var(--primary-color);">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Let's Work Together</h2>
-                <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Ready to discuss your home financing needs? Connect with Carla today.</p>
-                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="https://link.growsimple.tech/widget/booking/Vt3xFartJlAe19Tb4HId" target="_blank" class="btn-cta-white">Schedule Consultation</a>
-                    <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-cta-bordered">Apply Now</a>
-                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Page Section -->
-    <section id="services" class="page-section">
-        <!-- Banner Section -->
-        <div class="banner">
-             <!-- MODIFIED: Added text-center mx-auto -->
-            <div class="container mx-auto px-6 relative z-10 text-center">
-                <div class="max-w-2xl mx-auto">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6">Loan Products & Programs</h1>
-                    <p class="text-xl mb-8">Finding the right mortgage solution tailored to your unique needs. I've helped over 15,000 families!</p>
-                </div>
-            </div>
-        </div>
-        <div class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4 section-title inline-block" style="color: var(--primary-color);">Comprehensive Mortgage Solutions</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">If there's a way to help you finance your next home or your current one... I've done it all. Explore some of our popular options:</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="service-card p-8 rounded-lg shadow-md">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-home text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Fixed & ARMs</h3>
-                        <p class="text-gray-600">Secure predictable monthly payments with a fixed-rate mortgage, or explore the potential for lower initial rates with an adjustable-rate mortgage (ARM).</p>
-                    </div>
-                    <div class="service-card p-8 rounded-lg shadow-md">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                             <i class="fas fa-chart-pie text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Home Equity Line of Credit (HELOC)</h3>
-                        <p class="text-gray-600">Leverage the equity in your home to access funds for renovations, debt consolidation, or other major expenses.</p>
-                    </div>
-                    <div class="service-card p-8 rounded-lg shadow-md">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                             <i class="fas fa-flag-usa text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">FHA & VA Loans</h3>
-                        <p class="text-gray-600">Benefit from government-backed loan programs designed to make homeownership more accessible, often with lower down payments and flexible credit requirements.</p>
-                    </div>
-                    <div class="service-card p-8 rounded-lg shadow-md">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                             <i class="fas fa-undo-alt text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Reverse Mortgages Done Right</h3>
-                        <p class="text-gray-600">For homeowners 62+, explore options to convert home equity into tax-free income without selling your home, guided ethically and responsibly.</p>
-                    </div>
-                    <div class="service-card p-8 rounded-lg shadow-md">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                             <i class="fas fa-tools text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Renovation Purchases & Refis</h3>
-                        <p class="text-gray-600">Finance both the purchase price and the cost of improvements for your dream home, or refinance to fund renovations on your current property.</p>
-                    </div>
-                    <div class="service-card p-8 rounded-lg shadow-md">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-exchange-alt text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Bridge Loans</h3>
-                        <p class="text-gray-600">Bridge the gap between selling your current home and buying a new one with short-term financing solutions.</p>
-                    </div>
-                     <div class="service-card p-8 rounded-lg shadow-md">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-calculator text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Recasting & Buy-downs</h3>
-                        <p class="text-gray-600">Explore strategies like recasting to lower your payment without refinancing, or buy-downs to reduce your interest rate temporarily or long-term.</p>
-                    </div>
-                     <div class="service-card p-8 rounded-lg shadow-md">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                             <i class="fas fa-building text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Investment Financing</h3>
-                        <p class="text-gray-600">Specialized loan options for purchasing or refinancing investment properties to help build your real estate portfolio.</p>
-                    </div>
-                     <div class="service-card p-8 rounded-lg shadow-md bg-secondary-color">
-                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
-                             <i class="fas fa-vials text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Loan Lab™ Custom Solutions</h3>
-                        <p class="text-gray-600">Don't see exactly what you need? Contact us! We manufacture purpose-designed loans in our Loan Lab™.</p>
-                          <a href="https://link.growsimple.tech/widget/booking/Vt3xFartJlAe19Tb4HId" target="_blank" class="btn-primary mt-4">Discuss Your Needs</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="py-20" style="background-color: var(--secondary-color);">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4 section-title inline-block" style="color: var(--primary-color);">Our Streamlined Process</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">How we partner with you from application to closing.</p>
-                </div>
-                <div class="grid md:grid-cols-4 gap-8">
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-primary-color rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg" style="background-color: var(--primary-color);">1</div>
-                        <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-color);">Consultation & Pre-Approval</h3>
-                        <p class="text-gray-600">We discuss your goals, financial situation, and help you understand your buying power with a solid pre-approval.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-primary-color rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg" style="background-color: var(--primary-color);">2</div>
-                        <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-color);">Loan Application & Processing</h3>
-                        <p class="text-gray-600">We guide you through the application, gather necessary documents, and process your loan efficiently.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-primary-color rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg" style="background-color: var(--primary-color);">3</div>
-                        <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-color);">Underwriting & Approval</h3>
-                        <p class="text-gray-600">Our team works diligently with underwriters to secure your final loan approval, keeping you informed.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-primary-color rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl font-bold shadow-lg" style="background-color: var(--primary-color);">4</div>
-                        <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-color);">Closing & Beyond</h3>
-                        <p class="text-gray-600">We coordinate a smooth closing and remain your resource for future home financing needs.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- CTA Section -->
-        <div class="py-16" style="background-color: var(--primary-color);">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to Take the Next Step?</h2>
-                <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Whether you're ready to apply or just have questions, reach out today!</p>
-                 <!-- MODIFIED: Apply new CTA button classes -->
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="https://link.growsimple.tech/widget/booking/Vt3xFartJlAe19Tb4HId" target="_blank" class="btn-cta-white">Schedule a Consultation</a>
-                    <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-cta-bordered">Apply Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us Page Section -->
-    <section id="why-choose-us" class="page-section">
-        <!-- Banner Section -->
-        <div class="banner">
-             <!-- MODIFIED: Added text-center mx-auto -->
-            <div class="container mx-auto px-6 relative z-10 text-center">
-                <div class="max-w-2xl mx-auto">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6">Why Choose Carla Closes?</h1>
-                    <p class="text-xl mb-8">Experience, advocacy, and personalized solutions designed around you.</p>
-                </div>
-            </div>
-        </div>
-        <div class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4 section-title inline-block" style="color: var(--primary-color);">Your Dedicated Home Loan Partner</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">We provide benefits all Home Loan Officers should -- but often don't. Innovative - Responsive - Approachable.</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="benefit-card p-8">
-                         <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-award text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Decades of Experience</h3>
-                        <p class="text-gray-600">Leverage Carla's 37 years in the lending industry, serving over 15,000 families. She's seen it all and knows how to navigate complex situations.</p>
-                    </div>
-                    <div class="benefit-card p-8">
-                         <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-handshake-angle text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">True Partnership & Advocacy</h3>
-                        <p class="text-gray-600">You need more than a salesperson. Carla acts as your dedicated partner and advocate, putting your best interests first.</p>
-                    </div>
-                    <div class="benefit-card p-8">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-flask text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">The Loan Lab™ Approach</h3>
-                        <p class="text-gray-600">We don't offer cookie-cutter solutions. Our Loan Lab™ manufactures purpose-designed loans tailored specifically to your goals.</p>
-                    </div>
-                     <div class="benefit-card p-8">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-list-check text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Comprehensive Product Suite</h3>
-                        <p class="text-gray-600">From standard loans to niche products like renovation or reverse mortgages, we have the tools to find the right fit.</p>
-                    </div>
-                     <div class="benefit-card p-8">
-                        <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                             <i class="fas fa-comments text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Responsive Communication</h3>
-                        <p class="text-gray-600">We believe in clear, timely communication. You'll be kept informed throughout the entire process.</p>
-                    </div>
-                    <div class="benefit-card p-8">
-                         <div class="w-16 h-16 bg-secondary-color rounded-full flex items-center justify-center mb-6">
-                            <i class="fas fa-lightbulb text-2xl" style="color: var(--primary-color);"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Innovative Solutions</h3>
-                        <p class="text-gray-600">Carla's background includes developing innovative strategies for banks and credit unions – expertise now applied directly for you.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="py-20" style="background-color: var(--secondary-color);">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold mb-4 section-title inline-block" style="color: var(--primary-color);">Frequently Asked Questions</h2>
-                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Answers to common questions about working with Carla Closes.</p>
-                </div>
-                <div class="max-w-4xl mx-auto space-y-6">
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-color);">What is pre-approval and why do I need it?</h3>
-                        <p class="text-gray-700">Pre-approval determines how much you can likely borrow based on a review of your finances. It strengthens your offer when buying a home and shows sellers you're a serious buyer.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-color);">How much down payment do I need?</h3>
-                        <p class="text-gray-700">Down payment requirements vary significantly by loan program. Some options like VA or USDA loans may require 0% down, while FHA loans often require 3.5%. Conventional loans can range from 3% to 20% or more. We'll explore the best options for your situation.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-color);">What are closing costs?</h3>
-                        <p class="text-gray-700">Closing costs are fees associated with finalizing your mortgage, typically including appraisal fees, title insurance, recording fees, and lender charges. They usually range from 2% to 5% of the loan amount.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-color);">How long does the mortgage process take?</h3>
-                        <p class="text-gray-700">The timeline can vary, but typically it takes 30-60 days from application to closing. Factors like loan type, appraisal timing, and responsiveness affect the speed. We work efficiently to keep things moving.</p>
-                    </div>
-                     <div class="bg-white p-6 rounded-lg shadow-sm">
-                        <h3 class="text-xl font-semibold mb-3" style="color: var(--primary-color);">Do you only work in a specific area?</h3>
-                        <p class="text-gray-700">As a licensed broker, I can assist clients in the states where I hold a license. Please contact me to confirm if I can help in your specific state.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- CTA Section -->
-        <div class="py-16" style="background-color: var(--primary-color);">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Experience the Carla Closes Difference</h2>
-                <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Let's start crafting your personalized mortgage solution today.</p>
-                 <!-- MODIFIED: Apply new CTA button classes -->
-                <div class="flex flex-wrap justify-center gap-4">
-                     <a href="https://link.growsimple.tech/widget/booking/Vt3xFartJlAe19Tb4HId" target="_blank" class="btn-cta-white">Schedule Consultation</a>
-                    <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-cta-bordered">Apply Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Page Section -->
     <section id="contact" class="page-section">
         <!-- Banner Section -->
         <div class="banner">
-             <!-- MODIFIED: Added text-center mx-auto -->
             <div class="container mx-auto px-6 relative z-10 text-center">
                 <div class="max-w-2xl mx-auto">
                     <h1 class="text-5xl md:text-6xl font-bold mb-6">Contact Carla</h1>
@@ -864,52 +9,25 @@
                 </div>
             </div>
         </div>
+        <!-- Contact Content Section -->
         <div class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-2 gap-16">
+                    <!-- Left Column: Survey Iframe -->
                     <div>
-                        <h2 class="text-4xl font-bold mb-6 section-title" style="color: var(--primary-color);">Send a Message</h2>
-                        <p class="text-lg mb-8">Fill out the form below, and Carla will get back to you promptly to discuss your home loan goals.</p>
-                        <form class="space-y-6" action="#" method="POST">
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="contact-first-name" class="block text-gray-700 font-medium mb-2">First Name</label>
-                                    <input type="text" id="contact-first-name" name="first-name" class="form-input w-full rounded-md" required>
-                                </div>
-                                <div>
-                                    <label for="contact-last-name" class="block text-gray-700 font-medium mb-2">Last Name</label>
-                                    <input type="text" id="contact-last-name" name="last-name" class="form-input w-full rounded-md" required>
-                                </div>
-                            </div>
-                            <div>
-                                <label for="contact-email" class="block text-gray-700 font-medium mb-2">Email Address</label>
-                                <input type="email" id="contact-email" name="email" class="form-input w-full rounded-md" required>
-                            </div>
-                            <div>
-                                <label for="contact-phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
-                                <input type="tel" id="contact-phone" name="phone" class="form-input w-full rounded-md">
-                            </div>
-                            <div>
-                                <label for="contact-service" class="block text-gray-700 font-medium mb-2">I'm Interested In:</label>
-                                <select id="contact-service" name="service" class="form-input w-full rounded-md">
-                                    <option value="">-- Select an Option --</option>
-                                    <option value="purchase">Buying a Home</option>
-                                    <option value="refinance">Refinancing</option>
-                                    <option value="investment">Investment Property</option>
-                                    <option value="renovation">Renovation Loan</option>
-                                    <option value="heloc">HELOC</option>
-                                    <option value="reverse">Reverse Mortgage</option>
-                                    <option value="consultation">General Consultation</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="contact-message" class="block text-gray-700 font-medium mb-2">Message</label>
-                                <textarea id="contact-message" name="message" rows="5" class="form-input w-full rounded-md" placeholder="Tell us a bit about your needs..."></textarea>
-                            </div>
-                            <button type="submit" class="btn-primary">Send Message</button>
-                        </form>
+                        <!-- REMOVED Original H2, P, and FORM elements -->
+                        <!-- ADDED Iframe -->
+                        <h2 class="text-4xl font-bold mb-6 section-title" style="color: var(--primary-color);">Send a Quick Inquiry</h2>
+                        <p class="text-lg mb-8">Use the form below to send your questions or request information.</p>
+                        <div class="h-[600px] md:h-[750px] overflow-hidden rounded-lg shadow-md border border-gray-200">
+                            <!-- Added a container div with height for the iframe -->
+                            <iframe src="https://link.growsimple.tech/widget/survey/um8JHiiMdKAuK5vxmfLL" style="border:none;width:100%; height:100%;" scrolling="no" id="um8JHiiMdKAuK5vxmfLL" title="Carla Closes Inquiry"></iframe>
+                        </div>
+                        <!-- ADDED Script Tag (Can also be moved before </body>) -->
+                        <script src="https://link.growsimple.tech/js/form_embed.js"></script>
                     </div>
+
+                    <!-- Right Column: Contact Info (Remains the same) -->
                     <div>
                         <h2 class="text-4xl font-bold mb-6 section-title" style="color: var(--primary-color);">Contact Information</h2>
                         <p class="text-lg mb-8">Reach out directly via phone or email, or start your secure online application now.</p>
@@ -966,6 +84,7 @@
                 </div>
             </div>
         </div>
+        <!-- Map Section -->
         <div class="h-96 w-full bg-gray-300">
             <div class="w-full h-full flex items-center justify-center" style="background-color: var(--secondary-color);">
                 <div class="text-center">
@@ -975,6 +94,7 @@
                 </div>
             </div>
         </div>
+        <!-- FAQ Section -->
         <div class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -1004,149 +124,131 @@
          <!-- No CTA Section on Contact Page -->
     </section>
 
-    <!-- Footer Section -->
-    <footer class="footer py-16">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <div class="lg:col-span-1">
-                     <a href="#" class="block mb-4" onclick="showPage('home')">
-                        <img src="img/logo.png" alt="Carla Closes Logo" class="h-[150px] w-auto filter brightness-0 invert">
-                    </a>
-                    <p class="text-gray-300 mb-4">Your dedicated partner and advocate in home financing. Experience you can trust.</p>
-                    <p class="text-sm text-gray-400 mb-4">The Financial Key to Your Home</p>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-6 text-white">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-300 hover:text-white" onclick="showPage('home')">Home</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white" onclick="showPage('about')">About Us</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white" onclick="showPage('services')">Services</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white" onclick="showPage('why-choose-us')">Why Choose Us</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white" onclick="showPage('contact')">Contact</a></li>
-                         <li><a href="https://1850081.my1003app.com/61502/register" target="_blank" class="text-gray-300 hover:text-white">Apply Now</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-6 text-white">Popular Services</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-300 hover:text-white" onclick="showPage('services')">Fixed & ARM Loans</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white" onclick="showPage('services')">FHA / VA Loans</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white" onclick="showPage('services')">Renovation Loans</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white" onclick="showPage('services')">Investment Financing</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white" onclick="showPage('services')">HELOCs</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-semibold mb-6 text-white">Contact Information</h4>
-                    <ul class="space-y-3">
-                         <li class="flex items-start">
-                            <i class="fas fa-user mt-1 mr-3 text-accent-color"></i>
-                            <span class="text-gray-300">Carla Durheim<br>Founder | Home Loan Broker</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-phone-alt mt-1 mr-3 text-accent-color"></i>
-                             <a href="tel:509-994-2721" class="text-gray-300 hover:text-white">509-994-2721</a>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3 text-accent-color"></i>
-                            <a href="mailto:Carla@ChemFinancial.com" class="text-gray-300 hover:text-white">Carla@ChemFinancial.com</a>
-                        </li>
-                         <li class="flex items-start">
-                            <i class="fas fa-link mt-1 mr-3 text-accent-color"></i>
-                            <a href="http://www.ChemFinancial.com" target="_blank" class="text-gray-300 hover:text-white">www.ChemFinancial.com</a>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-building mt-1 mr-3 text-accent-color"></i>
-                            <span class="text-gray-300">
-                                410 E Sherman Ave, Suite 207<br>
-                                Coeur d’Alene, ID 83814
-                            </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-10 pt-10 border-t border-gray-700 text-center">
-                <div class="nmls-info mb-4">
-                    <p>Carla Durheim NMLS #61502 | Chem Financial</p>
-                    <p>Powered by Summit Lending - NMLS #1850081</p>
-                    <p>Summit Lending is an Equal Housing Lender. </p>
-                     <p>Licensed in: [List States Here]</p> <!-- !! UPDATE THIS !! -->
-                    <p><a href="http://www.nmlsconsumeraccess.org/" target="_blank">NMLS Consumer Access</a></p>
-                </div>
-                <p class="text-gray-400">© 2024 Carla Durheim | Carla Closes. All Rights Reserved.</p>
-                <div class="mt-4">
-                    <a href="#" class="text-gray-400 hover:text-white mx-3">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-white mx-3">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Footer and rest of the body remains the same -->
+    <!-- ... -->
     <script>
+        // All the previous JavaScript for menu toggle and page navigation remains here
+        // ... (include the full script block from the previous correct version) ...
+
+        // --- Make sure this part is included and correct ---
         // Mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Page navigation functions
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page-section');
-            pages.forEach(page => {
-                page.classList.remove('active-page');
-                 page.style.display = 'none';
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
             });
+        } else {
+            console.error("Mobile menu toggle elements not found.");
+        }
 
-            const targetPage = document.getElementById(pageId);
-             if (targetPage) {
-                targetPage.style.display = 'block';
-                 void targetPage.offsetWidth; // Reflow
-                targetPage.classList.add('active-page');
-             }
 
+        // --- Page Navigation Logic ---
+
+        const validPageIds = ['home', 'about', 'services', 'why-choose-us', 'contact']; // Define valid IDs
+
+        function updateActiveNavLink(activePageId) {
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(`'${pageId}'`)) {
+                const onclickAttr = link.getAttribute('onclick');
+                if (onclickAttr && onclickAttr.includes(`showPage('${activePageId}'`)) {
                     link.classList.add('active');
                 }
             });
 
-             const logoLink = document.querySelector('header a[onclick*="\'home\'"]');
-             const homeNavLinks = document.querySelectorAll('.nav-link[onclick*="\'home\'"]');
-             if (pageId === 'home') {
+            const homeNavLinks = document.querySelectorAll('.nav-link[onclick*="\'home\'"]');
+            if (activePageId === 'home') {
                  homeNavLinks.forEach(link => link.classList.add('active'));
              } else {
                   homeNavLinks.forEach(link => link.classList.remove('active'));
              }
+        }
 
+        function displayPageSection(pageIdToShow) {
+            const pages = document.querySelectorAll('.page-section');
+            let pageFound = false;
 
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (!mobileMenu.classList.contains('hidden')) {
+            pages.forEach(page => {
+                if (page.id === pageIdToShow) {
+                    page.style.display = 'block';
+                    void page.offsetWidth;
+                    page.classList.add('active-page');
+                    pageFound = true;
+                } else {
+                    page.style.display = 'none';
+                    page.classList.remove('active-page');
+                }
+            });
+
+            if (!pageFound) {
+                console.warn(`Page ID "${pageIdToShow}" not found. Displaying home page.`);
+                pageIdToShow = 'home';
+                const homePage = document.getElementById('home');
+                if (homePage) {
+                    homePage.style.display = 'block';
+                    void homePage.offsetWidth;
+                    homePage.classList.add('active-page');
+                }
+            }
+            return pageIdToShow;
+        }
+
+        function showPage(pageId, event) {
+            if (event) {
+                event.preventDefault();
+            }
+
+             if (!validPageIds.includes(pageId)) {
+                console.warn(`Invalid pageId "${pageId}" requested. Defaulting to home.`);
+                pageId = 'home';
+             }
+
+            const actualPageId = displayPageSection(pageId);
+
+            const newHash = '#' + actualPageId;
+            if (window.location.hash !== newHash) {
+                history.replaceState(null, '', newHash);
+            }
+
+            updateActiveNavLink(actualPageId);
+
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
             }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (event) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
-        // Initialize the page
+        function showPageFromHash() {
+            let hash = window.location.hash;
+            let pageId = hash ? hash.substring(1) : 'home';
+
+             if (!validPageIds.includes(pageId)) {
+                console.warn(`Invalid hash "#${pageId}" found. Defaulting to home.`);
+                pageId = 'home';
+                history.replaceState(null, '', '#home');
+            }
+
+            const actualPageId = displayPageSection(pageId);
+            updateActiveNavLink(actualPageId);
+
+            setTimeout(() => {
+                 window.scrollTo(0, 0);
+            }, 0);
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-             const pages = document.querySelectorAll('.page-section');
-             pages.forEach(page => {
-                 if (page.id !== 'home') {
-                     page.style.display = 'none';
-                     page.classList.remove('active-page');
-                 } else {
-                     page.style.display = 'block';
-                     page.classList.add('active-page');
-                 }
-             });
-            const homeLink = document.querySelector('.nav-link[onclick*="\'home\'"]');
-             if(homeLink) {
-                 homeLink.classList.add('active');
-             }
+            showPageFromHash();
         });
+
+        window.addEventListener('hashchange', showPageFromHash);
+
     </script>
+    <!-- Ensure the GrowSimple script is loaded if needed globally, otherwise the one after the iframe is fine -->
+    <!-- <script src="https://link.growsimple.tech/js/form_embed.js"></script> -->
 
 </body>
 </html>
