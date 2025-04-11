@@ -1082,7 +1082,7 @@
         </div>
     </footer>
 
-    <script>
+        <script>
         // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
@@ -1091,28 +1091,55 @@
 
         // Page navigation functions
         function showPage(pageId) {
+            // --- Prevent potential issues if no pageId is passed ---
+            if (!pageId) return;
+
             const pages = document.querySelectorAll('.page-section');
+            let pageFound = false;
             pages.forEach(page => {
-                page.classList.remove('active-page');
-                 page.style.display = 'none';
+                if (page.id === pageId) {
+                    page.style.display = 'block';
+                    void page.offsetWidth; // Reflow/repaint
+                    page.classList.add('active-page');
+                    pageFound = true;
+                } else {
+                    page.style.display = 'none';
+                    page.classList.remove('active-page');
+                }
             });
 
-            const targetPage = document.getElementById(pageId);
-             if (targetPage) {
-                targetPage.style.display = 'block';
-                 void targetPage.offsetWidth; // Reflow
-                targetPage.classList.add('active-page');
-             }
+             // --- If the pageId doesn't exist, default to home ---
+            if (!pageFound) {
+                console.warn(`Page ID "${pageId}" not found. Defaulting to home.`);
+                pageId = 'home'; // Set to default
+                const homePage = document.getElementById('home');
+                if (homePage) {
+                     homePage.style.display = 'block';
+                     void homePage.offsetWidth;
+                     homePage.classList.add('active-page');
+                }
+            }
 
+
+            // --- Update URL Hash (but only if it's different) ---
+            if (window.location.hash !== '#' + pageId) {
+                 // Use replaceState to avoid cluttering browser history too much with internal navigation
+                 // Use pushState if you want back/forward to step through internal pages
+                history.replaceState(null, '', '#' + pageId);
+            }
+
+
+            // --- Update Active Nav Link ---
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.classList.remove('active');
+                // Check based on the actual pageId being shown
                 if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(`'${pageId}'`)) {
                     link.classList.add('active');
                 }
             });
 
-             const logoLink = document.querySelector('header a[onclick*="\'home\'"]');
+             // Ensure home link active state is correct
              const homeNavLinks = document.querySelectorAll('.nav-link[onclick*="\'home\'"]');
              if (pageId === 'home') {
                  homeNavLinks.forEach(link => link.classList.add('active'));
@@ -1121,30 +1148,44 @@
              }
 
 
+            // --- Close Mobile Menu ---
             const mobileMenu = document.getElementById('mobile-menu');
             if (!mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
             }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // --- Scroll to top ---
+            // Don't scroll if it's the initial load and we're just setting the state from hash
+            if (event && event.type === 'click') { // Only scroll on actual clicks
+                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (!window.location.hash) { // Scroll if initial load goes to default home
+                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
-        // Initialize the page
+
+        // Function to handle showing page based on hash
+        function showPageFromHash() {
+            let hash = window.location.hash;
+            // Remove the '#' and handle empty hash
+            let pageId = hash ? hash.substring(1) : 'home';
+
+             // Basic validation: Check if an element with this ID exists AND has the page-section class
+            const targetElement = document.getElementById(pageId);
+            if (targetElement && targetElement.classList.contains('page-section')) {
+                 showPage(pageId);
+            } else {
+                console.warn(`Hash "${hash}" does not correspond to a valid page section. Defaulting to home.`);
+                showPage('home'); // Default to home if hash is invalid
+            }
+        }
+
+        // Initialize the page on load
         document.addEventListener('DOMContentLoaded', function() {
-             const pages = document.querySelectorAll('.page-section');
-             pages.forEach(page => {
-                 if (page.id !== 'home') {
-                     page.style.display = 'none';
-                     page.classList.remove('active-page');
-                 } else {
-                     page.style.display = 'block';
-                     page.classList.add('active-page');
-                 }
-             });
-            const homeLink = document.querySelector('.nav-link[onclick*="\'home\'"]');
-             if(homeLink) {
-                 homeLink.classList.add('active');
-             }
+            showPageFromHash(); // Show page based on initial hash or default to home
+
+            // Add event listener for hash changes (browser back/forward)
+             window.addEventListener('hashchange', showPageFromHash);
         });
     </script>
 
