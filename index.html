@@ -16,6 +16,10 @@
             --light-text: #666666;
         }
 
+        html { /* Added for smooth scrolling */
+             scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
@@ -321,7 +325,8 @@
     <header class="bg-white shadow-sm">
         <div class="container mx-auto py-5 px-6 flex justify-between items-center">
             <a href="#" class="block" onclick="showPage('home')">
-                <img src="img/logo.png" alt="Carla Closes Logo" class="h-[100px] w-auto" style="height: 200px;">            </a>
+                 <img src="img/logo.png" alt="Carla Closes Logo" class="h-[100px] w-auto"> <!-- Example size, adjust as needed -->
+            </a>
             <nav class="hidden md:flex space-x-8 items-center">
                 <a href="#" class="nav-link" onclick="showPage('home')">Home</a>
                 <a href="#" class="nav-link" onclick="showPage('about')">About Us</a>
@@ -353,7 +358,6 @@
     <section id="home" class="page-section active-page">
         <!-- Banner Section -->
         <div class="banner">
-            <!-- MODIFIED: Added text-center mx-auto -->
             <div class="container mx-auto px-6 relative z-10 text-center">
                 <div class="max-w-4xl mx-auto">
                     <h1 class="text-5xl md:text-6xl font-bold mb-6">Tailored Mortgage Solutions with a <span class="font-script">Personal Touch</span></h1>
@@ -426,69 +430,66 @@
             </div>
         </div>
 
-                <!-- Testimonials Section -->
-                <div class="py-20 bg-white">
-                    <div class="container mx-auto px-6">
-                       <!-- MODIFIED: Removed section-title class, added star div -->
-                       <div class="text-center mb-16">
-                           <h2 class="text-4xl font-bold mb-4" style="color: var(--primary-color);">Client Success Stories</h2>
-                           <!-- Added Star Icons -->
-                           <div class="text-center text-yellow-500 text-2xl mb-4">
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                               <i class="fas fa-star"></i>
-                           </div>
-                           <p class="text-lg text-gray-600 max-w-3xl mx-auto">Hear how Carla's dedication and expertise have helped families achieve their homeownership dreams.</p>
-                       </div>
-                       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                            <div class="testimonial-card rounded-lg">
-                               <p class="text-gray-600 mb-6">"Carla made the complex mortgage process feel simple and straightforward. Her guidance was invaluable in securing the perfect loan for our first home. We felt supported every step of the way!"</p>
-                               <div class="flex items-center">
-                                   <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
-                                       <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1061&q=80" alt="Client" class="w-full h-full object-cover">
-                                   </div>
-                                   <div>
-                                       <h4 class="font-semibold" style="color: var(--primary-color);">The Johnson Family</h4>
-                                       <p class="text-sm text-gray-500">First-Time Homebuyers</p>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="testimonial-card rounded-lg">
-                               <p class="text-gray-600 mb-6">"Refinancing seemed daunting, but Carla found us an option that significantly lowered our monthly payments. Her knowledge and proactive communication were exceptional."</p>
-                               <div class="flex items-center">
-                                   <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
-                                       <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Client" class="w-full h-full object-cover">
-                                   </div>
-                                   <div>
-                                       <h4 class="font-semibold" style="color: var(--primary-color);">Mark Davis</h4>
-                                       <p class="text-sm text-gray-500">Refinance Client</p>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="testimonial-card rounded-lg">
-                               <p class="text-gray-600 mb-6">"As an investor, finding the right financing quickly is crucial. Carla understands the market and always presents the best options. Her efficiency and expertise are unmatched."</p>
-                               <div class="flex items-center">
-                                   <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
-                                       <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Client" class="w-full h-full object-cover">
-                                   </div>
-                                   <div>
-                                       <h4 class="font-semibold" style="color: var(--primary-color);">Emily Thompson</h4>
-                                       <p class="text-sm text-gray-500">Real Estate Investor</p>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
+        <!-- Testimonials Section -->
+        <div class="py-20 bg-white">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4" style="color: var(--primary-color);">Client Success Stories</h2>
+                    <div class="text-center text-yellow-500 text-2xl mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Hear how Carla's dedication and expertise have helped families achieve their homeownership dreams.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                     <div class="testimonial-card rounded-lg">
+                        <p class="text-gray-600 mb-6">"Carla made the complex mortgage process feel simple and straightforward. Her guidance was invaluable in securing the perfect loan for our first home. We felt supported every step of the way!"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1061&q=80" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" style="color: var(--primary-color);">The Johnson Family</h4>
+                                <p class="text-sm text-gray-500">First-Time Homebuyers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card rounded-lg">
+                        <p class="text-gray-600 mb-6">"Refinancing seemed daunting, but Carla found us an option that significantly lowered our monthly payments. Her knowledge and proactive communication were exceptional."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" style="color: var(--primary-color);">Mark Davis</h4>
+                                <p class="text-sm text-gray-500">Refinance Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card rounded-lg">
+                        <p class="text-gray-600 mb-6">"As an investor, finding the right financing quickly is crucial. Carla understands the market and always presents the best options. Her efficiency and expertise are unmatched."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full mr-4 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Client" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold" style="color: var(--primary-color);">Emily Thompson</h4>
+                                <p class="text-sm text-gray-500">Real Estate Investor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- CTA Section -->
         <div class="py-16" style="background-color: var(--primary-color);">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to Find the Financial Key to Your Home?</h2>
                 <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Let's discuss your homeownership goals. Schedule a consultation or start your application today!</p>
-                 <!-- MODIFIED: Apply new CTA button classes -->
                 <div class="flex flex-wrap justify-center gap-4">
                     <a href="https://link.growsimple.tech/widget/booking/Vt3xFartJlAe19Tb4HId" target="_blank" class="btn-cta-white">Schedule Consultation</a>
                     <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-cta-bordered">Apply Now</a>
@@ -497,7 +498,7 @@
         </div>
     </section>
 
-       <!-- About Page Section -->
+    <!-- About Page Section -->
     <section id="about" class="page-section">
         <!-- Banner Section -->
         <div class="banner">
@@ -523,9 +524,7 @@
                         </div>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-xl">
-                        <!-- MODIFIED: Updated image src -->
                         <img src="img/Homeownership.png" alt="Chem Financial Philosophy" class="w-full h-auto">
-                        <!-- Note: Removed object-cover as it might not be needed if the image aspect ratio fits well -->
                     </div>
                 </div>
             </div>
@@ -606,10 +605,10 @@
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Let's Work Together</h2>
                 <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Ready to discuss your home financing needs? Connect with Carla today.</p>
-                 <div class="flex flex-wrap justify-center gap-4">
+                <div class="flex flex-wrap justify-center gap-4">
                     <a href="https://link.growsimple.tech/widget/booking/Vt3xFartJlAe19Tb4HId" target="_blank" class="btn-cta-white">Schedule Consultation</a>
                     <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-cta-bordered">Apply Now</a>
-                 </div>
+                </div>
             </div>
         </div>
     </section>
@@ -618,7 +617,6 @@
     <section id="services" class="page-section">
         <!-- Banner Section -->
         <div class="banner">
-             <!-- MODIFIED: Added text-center mx-auto -->
             <div class="container mx-auto px-6 relative z-10 text-center">
                 <div class="max-w-2xl mx-auto">
                     <h1 class="text-5xl md:text-6xl font-bold mb-6">Loan Products & Programs</h1>
@@ -735,7 +733,6 @@
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Ready to Take the Next Step?</h2>
                 <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Whether you're ready to apply or just have questions, reach out today!</p>
-                 <!-- MODIFIED: Apply new CTA button classes -->
                 <div class="flex flex-wrap justify-center gap-4">
                     <a href="https://link.growsimple.tech/widget/booking/Vt3xFartJlAe19Tb4HId" target="_blank" class="btn-cta-white">Schedule a Consultation</a>
                     <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-cta-bordered">Apply Now</a>
@@ -748,7 +745,6 @@
     <section id="why-choose-us" class="page-section">
         <!-- Banner Section -->
         <div class="banner">
-             <!-- MODIFIED: Added text-center mx-auto -->
             <div class="container mx-auto px-6 relative z-10 text-center">
                 <div class="max-w-2xl mx-auto">
                     <h1 class="text-5xl md:text-6xl font-bold mb-6">Why Choose Carla Closes?</h1>
@@ -843,7 +839,6 @@
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Experience the Carla Closes Difference</h2>
                 <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Let's start crafting your personalized mortgage solution today.</p>
-                 <!-- MODIFIED: Apply new CTA button classes -->
                 <div class="flex flex-wrap justify-center gap-4">
                      <a href="https://link.growsimple.tech/widget/booking/Vt3xFartJlAe19Tb4HId" target="_blank" class="btn-cta-white">Schedule Consultation</a>
                     <a href="https://1850081.my1003app.com/61502/register" target="_blank" class="btn-cta-bordered">Apply Now</a>
@@ -856,7 +851,6 @@
     <section id="contact" class="page-section">
         <!-- Banner Section -->
         <div class="banner">
-             <!-- MODIFIED: Added text-center mx-auto -->
             <div class="container mx-auto px-6 relative z-10 text-center">
                 <div class="max-w-2xl mx-auto">
                     <h1 class="text-5xl md:text-6xl font-bold mb-6">Contact Carla</h1>
@@ -1082,7 +1076,8 @@
         </div>
     </footer>
 
-        <script>
+    <!-- MODIFIED: Updated JavaScript -->
+    <script>
         // Mobile menu toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
@@ -1123,8 +1118,6 @@
 
             // --- Update URL Hash (but only if it's different) ---
             if (window.location.hash !== '#' + pageId) {
-                 // Use replaceState to avoid cluttering browser history too much with internal navigation
-                 // Use pushState if you want back/forward to step through internal pages
                 history.replaceState(null, '', '#' + pageId);
             }
 
@@ -1156,27 +1149,25 @@
 
             // --- Scroll to top ---
             // Don't scroll if it's the initial load and we're just setting the state from hash
-            if (event && event.type === 'click') { // Only scroll on actual clicks
-                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if (!window.location.hash) { // Scroll if initial load goes to default home
-                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+             if (event && event.type === 'click') { // Only scroll on actual clicks
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+             } else if (!window.location.hash || window.location.hash === '#home') { // Scroll if initial load goes to default home or explicitly #home
+                  window.scrollTo({ top: 0 }); // Use non-smooth for initial load potentially
+             }
         }
 
 
         // Function to handle showing page based on hash
         function showPageFromHash() {
             let hash = window.location.hash;
-            // Remove the '#' and handle empty hash
-            let pageId = hash ? hash.substring(1) : 'home';
+            let pageId = hash ? hash.substring(1) : 'home'; // Default to 'home' if no hash
 
-             // Basic validation: Check if an element with this ID exists AND has the page-section class
             const targetElement = document.getElementById(pageId);
             if (targetElement && targetElement.classList.contains('page-section')) {
                  showPage(pageId);
             } else {
                 console.warn(`Hash "${hash}" does not correspond to a valid page section. Defaulting to home.`);
-                showPage('home'); // Default to home if hash is invalid
+                showPage('home'); // Default to home if hash is invalid or element not found
             }
         }
 
